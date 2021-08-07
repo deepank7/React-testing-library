@@ -11,14 +11,16 @@ const MockFollowersList = () => {
 }
 describe("FollowersList", () => {
     it('should render the first follower card', async () => {
+        jest.mock("../../../__mocks__/axios")
         render(<MockFollowersList />);
-        const followerDivElement = await screen.findByTestId("follower-item-0");
+        const followerDivElement = await screen.findByTestId(`follower-item-0`);
+        screen.debug()
         expect(followerDivElement).toBeInTheDocument();
     });
 
-    it('should render all fivee follower cards', async () => {
-        render(<MockFollowersList />);
-        const followerDivElements = await screen.findAllByTestId(/follower-item/i);
-        expect(followerDivElements.length).toBe(5);
-    });
+    // it('should render all fivee follower cards', async () => {
+    //     render(<MockFollowersList />);
+    //     const followerDivElements = await screen.findAllByTestId(/follower-item/i);
+    //     expect(followerDivElements.length).toBe(5);
+    // });
 })
